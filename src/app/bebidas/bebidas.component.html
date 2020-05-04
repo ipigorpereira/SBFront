@@ -1,0 +1,38 @@
+<h1>Produtos/Bebidas</h1>
+
+<!-- <em *ngIf="!(blogPosts$ | async)"><em>Loading...</em></p> -->
+<p>
+  <a routerLink="/bebidas/add" class="btn btn-primary float-right mb-3">Adicionar Bebida</a>
+</p>
+<!-- *ngIf="(bebidas$ | async)?.length>0" -->
+<table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Marca</th>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bebida of bebidas$" >
+
+      <td>{{bebida.tipoBebida.tipo}}</td>
+      <td>{{bebida.marca.nome}}</td>
+      <td>{{ bebida.descricao }}</td>
+      <td>{{ bebida.valor }}</td>
+      <div class="col-md-4 col-lg-2">
+      <td><a routerLink="/bebidas/addremove/{{bebida.bebidaId}}" class="btn btn-outline-secondary btn-sm float-right btn-block">Estoque</a>
+      </td>
+      <td><a routerLink="/bebidas/edit/{{bebida.bebidaId}}" class="btn btn-primary btn-sm float-right btn-block">Editar</a>
+      </td>
+      <td><a [routerLink]="" (click)="delete(bebida.bebidaId)" class="btn btn-danger btn-sm float-right btn-block">Delete</a>
+      </td>
+      </div>
+
+    </tr>
+  </tbody>
+</table>

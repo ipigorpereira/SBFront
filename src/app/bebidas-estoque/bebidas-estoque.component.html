@@ -1,0 +1,63 @@
+<div class="titulo-pag">Ajuste de Estoque</div>
+<p></p>
+<hr />
+<div class = "row col-md-12">
+<div class="row col-md-6">
+    <div class="titulo">
+        Tipo de bebida: &nbsp;
+    </div>
+    <div class="conteudo">
+    {{this.bebidaExistente.tipoBebida.tipo}}
+    </div>
+
+
+</div>
+
+<div class="row col-md-6">
+
+  <div class="titulo">
+   Marca: &nbsp;
+  </div>
+  <div class="conteudo">
+    {{this.bebidaExistente.marca.nome}}
+  </div>
+</div>
+
+</div>
+
+<p></p><p></p>
+
+  <div class=" row col-md-12">
+    <div class="titulo">Descrição: &nbsp;</div>
+    <div class="conteudo"> {{this.bebidaExistente.descricao}}</div>
+  </div>
+
+  <hr />
+  <p></p>
+<form [formGroup]="form"  #formDir="ngForm" novalidate>
+  <div class="form-group row">
+    <label for="quantidade" class="col-2 col-form-label conteudo">Quantidade:</label>
+    <div class="col-3">
+      <input  min="0.00" max="10000.00" type="number" formControlName="quantidade" id="quantidade" class="form-control">
+    </div>
+    <span class="text-danger ml-3" *ngIf="form.controls['quantidade'].invalid && formDir.submitted">
+      Quantidade Obrigatória
+    </span>
+  </div>
+  <p></p>
+
+  <div class="form-group row col-md-12 ">
+    <div class="col-6">
+        <button class="btn btn-danger col-6 center" (click)="Remover()">Remover</button>
+    </div>
+    <div class="col-6">
+        <button class="btn btn-success col-6 center" (click)="Adicionar()">Adicionar</button>
+    </div>
+
+  </div>
+
+  </form>
+
+
+
+

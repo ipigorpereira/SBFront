@@ -1,0 +1,26 @@
+<h1>Tipo de Bebida</h1>
+
+<!-- <em *ngIf="!(blogPosts$ | async)"><em>Loading...</em></p> -->
+<p>
+  <a routerLink="/tipobebidas/add" class="btn btn-primary float-right mb-3">Adicionar Tipo de Bebida</a>
+</p>
+<!-- *ngIf="(marcas$ | async)?.length>0" -->
+<table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tipoBebida of (tipoBebidas$ | async)">
+      <td>{{ tipoBebida.tipo }}</td>
+      <td><a routerLink="/tipobebidas/edit/{{tipoBebida.tipoBebidaId}}" class="btn btn-primary btn-sm float-right">Editar</a>
+      </td>
+      <td><a [routerLink]="" (click)="delete(tipoBebida.tipoBebidaId)" class="btn btn-danger btn-sm float-right">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

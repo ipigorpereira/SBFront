@@ -1,0 +1,31 @@
+
+<ng-container>
+  <mat-toolbar class="example-header">Sabores dos Vinhos</mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]= false>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/clientes/lista">Clientes</a>
+        <a mat-list-item routerLink="/marcas/lista">Marca</a>
+        <a mat-list-item routerLink="/tipobebidas/lista">Tipo de Bebida</a>
+        <a mat-list-item href="/bebidas/lista">Produtos</a>
+        <a mat-list-item href="#">Estoque</a>
+      </mat-nav-list>
+      </mat-sidenav>
+
+    <mat-sidenav-content>
+      <button mat-button example-toggle (click)="sidenav.toggle()">Menu</button>
+         <div style="padding: 20px;">
+        <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar class="example-footer">
+
+    <div style="position: relative; left:1200px;">Igor Pereira</div>
+
+
+  </mat-toolbar>
+</ng-container>
+

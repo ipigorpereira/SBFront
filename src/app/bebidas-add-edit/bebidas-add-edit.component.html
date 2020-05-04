@@ -1,0 +1,58 @@
+<h1>{{actionType}} Produto / Bebida</h1>
+
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+  <div class="form-group">
+    <label class=" control-label col-md-12">Tipo de bebida</label>
+    <div class="col-md- 6" >
+      <select class="form-control form-control-sm"  formControlName="tipoBebidaId" id="tipoBebidaId" >
+          <option value="" disabled selected>Escolha o tipo da bebida</option>
+          <option *ngFor="let tipobebida of (tipoBebidas$ | async)" value="{{tipobebida.tipoBebidaId}}">{{tipobebida.tipo}}</option>
+      </select>
+    </div>
+    <span class="text-danger ml-3" *ngIf="form.controls['tipoBebidaId'].invalid && formDir.submitted">
+      Tipo de bebida obrigatório.
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label class=" control-label col-md-12">Marca</label>
+    <div class="col-md- 6">
+      <select class="form-control form-control-sm" formControlName="marcaId" id="marcaId">
+        <option value="" disabled selected>Escolha a marca da bebida</option>
+        <option *ngFor="let marca of (marcas$ | async)" value="{{marca.marcaId}}">{{marca.nome}}
+        </option>
+      </select>
+    </div>
+    <span class="text-danger ml-3" *ngIf="form.controls['marcaId'].invalid && formDir.submitted">
+      Marca obrigatória.
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Descrição/Nome</label>
+    <div class="col-md-12">
+      <input type="text" formControlName="descricao" id="descricao" class="form-control">
+    </div>
+    <span class="text-danger ml-3" *ngIf="form.controls['descricao'].invalid && formDir.submitted">
+      Descricao obrigatória.
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Valor Unitário</label>
+    <div class="col-md-12">
+      <input type="number" min="0.00" max="10000.00" step="0.01" formControlName="valor" id="valor" class="form-control">
+    </div>
+    <span class="text-danger ml-3" *ngIf="form.controls['valor'].invalid && formDir.submitted">
+      Valor Obrigatório.
+    </span>
+  </div>
+
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-success float-right">Save</button>
+    <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>
+  </div>
+
+</form>
