@@ -10,6 +10,10 @@ import { TipoBebidasAddEditComponent } from './tipo-bebidas-add-edit/tipo-bebida
 import { BebidasComponent } from './bebidas/bebidas.component';
 import { BebidasAddEditComponent } from './bebidas-add-edit/bebidas-add-edit.component';
 import { BebidasEstoqueComponent } from './bebidas-estoque/bebidas-estoque.component';
+import { VendasComponent } from './vendas/vendas.component';
+import { VendasAddEditComponent } from './vendas-add-edit/vendas-add-edit.component';
+import { VendasCreateComponent } from './vendas-create/vendas-create.component';
+
 
 
 const routes: Routes = [
@@ -26,6 +30,9 @@ const routes: Routes = [
   { path: 'bebidas/edit/:id', component: BebidasAddEditComponent },
   { path: 'bebidas/add', component: BebidasAddEditComponent },
   { path: 'bebidas/addremove/:id', component: BebidasEstoqueComponent },
+  { path: 'vendas/lista', component: VendasComponent },
+  { path: 'vendas/create', component: VendasCreateComponent },
+  { path: 'vendas/addremove/:id', component: VendasAddEditComponent },
   { path: '**', redirectTo: '/' }
 
 ];

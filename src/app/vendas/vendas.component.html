@@ -1,0 +1,39 @@
+<h1>Vendas</h1>
+
+<!-- <em *ngIf="!(blogPosts$ | async)"><em>Loading...</em></p> -->
+<p>
+  <a routerLink="/vendas/create" class="btn btn-primary float-right mb-3">Adicionar Venda</a>
+</p>
+<!-- *ngIf="(vendas$ | async)?.length>0" -->
+<table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Cliente</th>
+      <th>Data</th>
+      <th>Entrega</th>
+      <th>Pagamento</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let venda of vendas$">
+
+      <td>{{venda.vendaId}}</td>
+      <td>{{venda.data}}</td>
+      <td>{{venda.cliente}}</td>
+      <td>{{venda.pedidoEntregue }}</td>
+      <td>{{venda.statusPagamento }}</td>
+      <div class="col-md-4 col-lg-2">
+        <td><a routerLink="/vendas/addremove/{{venda.vendaId}}"
+            class="btn btn-outline-secondary btn-sm float-right btn-block">Estoque</a>
+        </td>
+        <td><a [routerLink]="" (click)="delete(venda.vendaId)"
+            class="btn btn-danger btn-sm float-right btn-block">Delete</a>
+        </td>
+      </div>
+
+    </tr>
+  </tbody>
+</table>

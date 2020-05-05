@@ -23,6 +23,9 @@ import { SidenavFixedExampleComponent } from './sidenav-fixed-example/sidenav-fi
 import { BebidasComponent } from './bebidas/bebidas.component';
 import { BebidasAddEditComponent } from './bebidas-add-edit/bebidas-add-edit.component';
 import { BebidasEstoqueComponent } from './bebidas-estoque/bebidas-estoque.component';
+import { VendasComponent } from './vendas/vendas.component';
+import { VendasAddEditComponent } from './vendas-add-edit/vendas-add-edit.component';
+import { VendasCreateComponent } from './vendas-create/vendas-create.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { BebidasEstoqueComponent } from './bebidas-estoque/bebidas-estoque.compo
     SidenavFixedExampleComponent,
     BebidasComponent,
     BebidasAddEditComponent,
-    BebidasEstoqueComponent
+    BebidasEstoqueComponent,
+    VendasComponent,
+    VendasAddEditComponent,
+    VendasCreateComponent
 
   ],
   imports: [

@@ -19,6 +19,7 @@ export class BebidasEstoqueComponent implements OnInit {
   bebidaId: string;
   errorMessage: any;
   bebidaExistente: Bebida;
+  numeroEstoque: number;
 
   constructor(private bebidaService: BebidaService,
               private formBuilder: FormBuilder,
@@ -47,7 +48,11 @@ export class BebidasEstoqueComponent implements OnInit {
       this.bebidaService.getBebida(this.bebidaId)
         .subscribe(data => (
           this.bebidaExistente = data,
-          this.form.controls['bebidaId'].setValue(this.bebidaExistente.bebidaId)))
+          this.form.controls['bebidaId'].setValue(this.bebidaExistente.bebidaId)));
+
+      this.bebidaService.getEstoque(this.bebidaId).subscribe(data => (
+        this.numeroEstoque = data.quantidade)
+      );
     }
 
   }
@@ -63,10 +68,11 @@ export class BebidasEstoqueComponent implements OnInit {
         bebidaId: this.form.get('bebidaId').value,
         quantidade: this.form.get('quantidade').value
       };
+      debugger;
 
       this.bebidaService.adicionaBebida(estoque)
         .subscribe((data) => {
-          this.router.navigate(['/bebidas/addremove/' + this.bebidaExistente.bebidaId]);
+          location.reload();
         });
     }
 
@@ -83,9 +89,16 @@ export class BebidasEstoqueComponent implements OnInit {
         quantidade: this.form.get('quantidade').value
       };
 
+      if (this.numeroEstoque < estoque.quantidade) {
+        alert("Quantidade inválida");
+        location.reload();
+        return;
+      }
+
+
       this.bebidaService.removeBebida(estoque)
         .subscribe((data) => {
-          this.router.navigate(['/bebidas/addremove/' + this.bebidaExistente.bebidaId]);
+          location.reload();
         });
     }
 

@@ -3,13 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Bebida } from '../models/bebida';
+import { Venda } from '../models/venda';
 import { Estoque } from '../models/estoque';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BebidaService {
+export class VendaService {
 
   myAppUrl: string;
   myApiUrl: string;
@@ -27,26 +27,26 @@ export class BebidaService {
   };
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.appUrl;
-    this.myApiUrl = '/bebida/listcompleto/';
-    this.myApiUrl1 = '/bebida/listone/';
-    this.myApiUrlCreate = '/bebida/create/';
-    this.myApiUrlUpdate = '/bebida/update/';
-    this.myApiUrlDelete = '/bebida/delete/';
+    this.myApiUrl = '/venda/listcompleto/';
+    this.myApiUrl1 = '/venda/listone/';
+    this.myApiUrlCreate = '/venda/create/';
+    this.myApiUrlUpdate = '/venda/update/';
+    this.myApiUrlDelete = '/venda/delete/';
     this.myApiUrlAddEstoque = '/estoque/adiciona/';
     this.myApiUrlRemoveEstoque = '/estoque/remove/';
     this.myApiUrlGetEstoque = '/estoque/listone/';
   }
 
-  getBebidas(): Observable<Bebida[]> {
-    return this.http.get<Bebida[]>(this.myAppUrl + this.myApiUrl)
+  getVendas(): Observable<Venda[]> {
+    return this.http.get<Venda[]>(this.myAppUrl + this.myApiUrl)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  getBebida(bebidaId: string): Observable<Bebida> {
-    return this.http.get<Bebida>(this.myAppUrl + this.myApiUrl1 + bebidaId)
+  getVenda(bebidaId: string): Observable<Venda> {
+    return this.http.get<Venda>(this.myAppUrl + this.myApiUrl1 + bebidaId)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -61,31 +61,31 @@ export class BebidaService {
       );
   }
 
-  saveBebida(bebida): Observable<Bebida> {
-    return this.http.post<Bebida>(this.myAppUrl + this.myApiUrlCreate, JSON.stringify(bebida), this.httpOptions)
+  saveVenda(venda): Observable<Venda> {
+    return this.http.post<Venda>(this.myAppUrl + this.myApiUrlCreate, JSON.stringify(venda), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  updateBebida(bebida): Observable<Bebida> {
-    return this.http.post<Bebida>(this.myAppUrl + this.myApiUrlUpdate, JSON.stringify(bebida), this.httpOptions)
+  updateVenda(venda): Observable<Venda> {
+    return this.http.post<Venda>(this.myAppUrl + this.myApiUrlUpdate, JSON.stringify(venda), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  deleteBebida(bebidaId: string): Observable<Bebida> {
-    return this.http.delete<Bebida>(this.myAppUrl + this.myApiUrlDelete + bebidaId)
+  deleteVenda(bebidaId: string): Observable<Venda> {
+    return this.http.delete<Venda>(this.myAppUrl + this.myApiUrlDelete + bebidaId)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  adicionaBebida(estoque): Observable<Estoque> {
+  adicionaVenda(estoque): Observable<Estoque> {
     debugger;
     return this.http.post<Estoque>(this.myAppUrl + this.myApiUrlAddEstoque, JSON.stringify(estoque), this.httpOptions)
       .pipe(
@@ -93,7 +93,7 @@ export class BebidaService {
         catchError(this.errorHandler)
       );
   }
-  removeBebida(estoque): Observable<Estoque> {
+  removeVenda(estoque): Observable<Estoque> {
     return this.http.post<Estoque>(this.myAppUrl + this.myApiUrlRemoveEstoque, JSON.stringify(estoque), this.httpOptions)
       .pipe(
         retry(1),
